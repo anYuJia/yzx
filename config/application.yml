@@ -1,0 +1,10 @@
+server:
+  port: 9999
+datasource:
+  diverName: mysql
+  host: 127.0.0.1
+  port: 3306
+  database: mydata
+  username: root
+  password: z0114b3586
+  charset: utf8
