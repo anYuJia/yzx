@@ -11,8 +11,8 @@ import (
 
 func main() {
 	config.InitConfig()
-	db := commen.InitDb()
-	defer db.Close()
+	commen.InitDB()
+	defer commen.CloseDB()
 	r := gin.Default()
 	r = routes.CollectRouter(r)
 	panic(r.Run(":" + viper.GetString("server.port")))

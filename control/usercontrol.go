@@ -6,6 +6,7 @@ import (
 	"7/response"
 	"github.com/gin-gonic/gin"
 	"golang.org/x/crypto/bcrypt"
+	"net/http"
 )
 
 func Register(context *gin.Context) {
@@ -68,10 +69,18 @@ func Info(context *gin.Context) {
 	})
 }
 
-func InsertContent(context gin.Context) {
+func InsertContent(context *gin.Context) {
 	username := context.PostForm("username")
-	content := context.PostForm("username")
+	content := context.PostForm("content")
 	time := context.PostForm("time")
 	parentContent := context.PostForm("parentContent")
-
+	DBContent := commen.GetDBContent()
+	userCon := mod.UserCon{
+		Username:       username,
+		Time:           time,
+		Content:        content,
+		ParentsContent: parentContent,
+	}
+	DBContent.Create(&userCon)
+	response.Response(context, http.StatusOK, 200, gin.H{"data": content}, "评论成功")
 }
