@@ -84,3 +84,37 @@ func InsertContent(context *gin.Context) {
 	DBContent.Create(&userCon)
 	response.Response(context, http.StatusOK, 200, gin.H{"data": content}, "评论成功")
 }
+
+func Index(context *gin.Context) {
+	var userCons []mod.UserCon
+	DB := commen.GetDBContent()
+	DB.Find(&userCons)
+	response.Success(context, gin.H{"data": userCons}, "ok")
+}
+
+func RePassword(context *gin.Context) {
+	username := context.PostForm("username")
+	password := context.PostForm("password")
+	DB := commen.GetDB()
+	var user mod.User
+	DB.Where("username = ?", username).First(&user)
+	if user.Username != username {
+		response.Fail(context, gin.H{}, "用户名·不存在")
+		return
+	}
+	hashPassword, _ := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
+	if err := bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(password)); err == nil {
+		response.Fail(context, gin.H{}, "密码不能和之前一样噢")
+		return
+	}
+	DB.Model(&user).Updates(map[string]interface{}{"username": username, "password": hashPassword})
+}
+
+func Star(context *gin.Context) {
+	content := context.PostForm("context")
+	db := commen.GetDBContent()
+	var userContent mod.UserCon
+	db.Where("content = ?", content).First(&userContent)
+	db.Model(&userContent).Updates(map[string]interface{}{"content": content, "star": userContent.Star + 1})
+	response.Success(context, gin.H{"star": userContent.Star + 1}, "点赞成功")
+}

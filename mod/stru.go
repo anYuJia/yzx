@@ -13,4 +13,5 @@ type UserCon struct {
 	Time           string `gorm:"type:varchar(25);not null;unique"`
 	Content        string `gorm:"type:varchar(50);not null"`
 	ParentsContent string `gorm:"type:varchar(50);not null"`
+	Star           int16  `gorm:"type:int;not null;default:0"`
 }
