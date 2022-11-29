@@ -1,0 +1,277 @@
+html body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: darkcyan;
+}
+
+.card {
+    display: inline;
+    position: fixed;
+    top: 100px;
+    border-radius: 7px;
+    width: 300px;
+    height: 490px;
+    background: #e5e8ea;
+    border: 1px solid #eceef3;
+    box-shadow: 10px 10px 64px 0 rgba(180, 180, 207, 0.75);
+    -webkit-box-shadow: 10px 10px 64px 0 rgba(186, 186, 202, 0.75);
+    -moz-box-shadow: 10px 10px 64px 0 rgba(208, 208, 231, 0.75);
+}
+
+.card {
+    padding: 25px;
+}
+
+.card_header {
+    display: flex;
+    align-items: center;
+}
+
+.card svg {
+    color: #7878bd;
+    margin-bottom: 20px;
+    margin-right: 5px;
+}
+
+.form_heading {
+    padding-bottom: 20px;
+    font-size: 21px;
+    color: #7878bd;
+}
+
+.field {
+    padding-bottom: 10px;
+}
+
+.card input {
+    border-radius: 5px;
+    background-color: #e9e9f7;
+    padding: 5px;
+    width: 100%;
+    color: #7a7ab3;
+    border: 1px solid #dadaf7
+}
+
+.card input:focus-visible {
+    outline: 1px solid #aeaed6;
+}
+
+.card input::placeholder {
+    color: #bcbcdf;
+}
+
+label {
+    color: #B2BAC8;
+    font-size: 14px;
+    display: block;
+    padding-bottom: 4px;
+}
+
+.card button {
+    background-color: #7878bd;
+    margin-top: 10px;
+    font-size: 14px;
+    padding: 7px 12px;
+    height: auto;
+    font-weight: 500;
+    color: white;
+    border: #5f5f9c;
+    border-radius: 14px;
+}
+
+.card button:hover {
+    background-color: #5f5f9c;
+}
+
+
+.form-control {
+    position: relative;
+    margin: 20px 0 40px;
+    width: 300px;
+}
+
+.form-control input {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 2px #7e0cc0 solid;
+    display: block;
+    width: 100%;
+    padding: 15px 0;
+    font-size: 18px;
+    color: #5c077e;
+}
+
+.form-control{
+    top: 100px;
+}
+.form-control input:focus,
+.form-control input:valid {
+    outline: 0;
+    border-bottom-color: #510980;
+}
+
+.form-control label {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    pointer-events: none;
+}
+
+.form-control label span {
+    display: inline-block;
+    font-size: 18px;
+    min-width: 5px;
+    color: #7a087e;
+    transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.form-control input:focus+label span,
+.form-control input:valid+label span {
+    color: #76129d;
+    transform: translateY(-30px);
+}
+
+
+#send {
+    position: relative;
+    top: 100px;
+    left: 30px;
+    font-family: inherit;
+    font-size: 20px;
+    background: royalblue;
+    color: white;
+    padding: 0.7em 1em;
+    padding-left: 0.9em;
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.2s;
+}
+
+#send span {
+    display: block;
+    margin-left: 0.3em;
+    transition: all 0.3s ease-in-out;
+}
+
+#send svg {
+    display: block;
+    transform-origin: center center;
+    transition: transform 0.3s ease-in-out;
+}
+
+#send:hover .svg-wrapper {
+    animation: fly-1 0.6s ease-in-out infinite alternate;
+}
+
+#send:hover svg {
+    transform: translateX(1.2em) rotate(45deg) scale(1.1);
+}
+
+#send:hover span {
+    transform: translateX(5em);
+}
+
+#send:active {
+    transform: scale(0.95);
+}
+
+@keyframes fly-1 {
+    from {
+        transform: translateY(0.1em);
+    }
+
+    to {
+        transform: translateY(-0.1em);
+    }
+}
+
+
+
+
+.box_content{
+    position: fixed;
+    height: fit-content;
+    top: 200px;
+    text-align: left;
+    width: 800px;
+    border: #e9e9ea 1px solid;
+}
+.box_content .title{
+    font-size: 30px;
+    color: #30f304;
+}
+.box_content .board{
+    position: relative;
+    top: 50px;
+    left: 30px;
+}
+.box_content .board .username{
+    font-size: 35px;
+    color: orangered;
+}
+.box_content .board .content{
+    font-size: 20px;
+}
+.box_content .board .time{
+    font-size: 10px;
+}
+.box_content .board .star{
+    width: 30px;
+    height: 10px;
+}
+.cta {
+    border: none;
+    background: none;
+}
+
+.cta span {
+    padding-bottom: 7px;
+    letter-spacing: 4px;
+    font-size: 14px;
+    padding-right: 15px;
+    text-transform: uppercase;
+}
+
+.cta{
+
+}
+.cta svg {
+    transform: translateX(-8px);
+    transition: all 0.3s ease;
+}
+
+.cta:hover svg {
+    transform: translateX(0);
+}
+
+.cta:active svg {
+    transform: scale(0.9);
+}
+
+.hover-underline-animation {
+    position: relative;
+    color: black;
+    padding-bottom: 20px;
+}
+
+.hover-underline-animation:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #000000;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.cta:hover .hover-underline-animation:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}

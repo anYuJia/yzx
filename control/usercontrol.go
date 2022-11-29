@@ -6,15 +6,18 @@ import (
 	"7/response"
 	"github.com/gin-gonic/gin"
 	"golang.org/x/crypto/bcrypt"
+	"log"
 	"net/http"
 )
 
 func Register(context *gin.Context) {
 	username := context.PostForm("username")
 	password := context.PostForm("password")
+	log.Println("username:" + username + "   " + "password:" + password)
 	DB := commen.GetDB()
 	var user mod.User
 	DB.Where("username = ?", username).First(&user)
+	context.Writer.Header().Set("Access-Control-Allow-Origin", "*")
 	if user.Username == username {
 		response.Fail(context, gin.H{}, "该用户已经被用过咯，换一个试试吧！")
 		return
@@ -35,6 +38,8 @@ func Register(context *gin.Context) {
 func Login(context *gin.Context) {
 	username := context.PostForm("username")
 	password := context.PostForm("password")
+	context.Writer.Header().Set("Access-Control-Allow-Origin", "*")
+	log.Println("username:" + username + "   " + "password:" + password)
 	DB := commen.GetDB()
 	var user mod.User
 	DB.Where("username = ?", username).First(&user)
@@ -111,7 +116,7 @@ func RePassword(context *gin.Context) {
 }
 
 func Star(context *gin.Context) {
-	content := context.PostForm("context")
+	content := context.PostForm("content")
 	db := commen.GetDBContent()
 	var userContent mod.UserCon
 	db.Where("content = ?", content).First(&userContent)
