@@ -56,19 +56,20 @@ func InitDbContent() *gorm.DB {
 	DBContent = db
 	return db
 }
-
 func GetDB() *gorm.DB {
 	return DB
 }
 func GetDBContent() *gorm.DB {
 	return DBContent
 }
-
 func InitDB() {
 	InitDb()
 	InitDbContent()
 }
 func CloseDB() {
-	DB.Close()
-	DBContent.Close()
+	err := DB.Close()
+	err = DBContent.Close()
+	if err != nil {
+		return
+	}
 }
