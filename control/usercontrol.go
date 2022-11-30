@@ -119,5 +119,5 @@ func Star(context *gin.Context) {
 	var userContent mod.UserCon
 	db.Where("content = ?", content).First(&userContent)
 	db.Model(&userContent).Updates(map[string]interface{}{"content": content, "star": userContent.Star + 1})
-	response.Success(context, gin.H{"star": userContent.Star + 1}, "点赞成功")
+	response.Success(context, gin.H{"star": userContent.Star}, "点赞成功")
 }
