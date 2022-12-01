@@ -326,7 +326,7 @@ function Star(e){
         .then(data => {
             if (data["code"]===200){
                 //成功
-                alert(x.parentNode.querySelector(".time").innerHTML)
+                //alert(x.parentNode.querySelector(".time").innerHTML)
                 x.innerHTML = data["data"]["star"]+"赞"
             }
             else {
